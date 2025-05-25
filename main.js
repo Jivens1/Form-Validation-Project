@@ -4,49 +4,59 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 
 function showError(input, message) {
-  const formControl = input.parentElement.parentElement; // .form-control is 2 levels up because of .input-wrapper
-  formControl.className = 'form-control error';
+  const formControl = input.closest('.form-control');
+  formControl.classList.add('error');
   const small = formControl.querySelector('small');
   small.innerText = message;
 }
 
 function showSuccess(input) {
-  const formControl = input.parentElement.parentElement;
-  formControl.className = 'form-control success';
+  const formControl = input.closest('.form-control');
+  formControl.classList.remove('error');
 }
 
 function checkEmail(input) {
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i;
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (re.test(input.value.trim())) {
     showSuccess(input);
     return true;
   } else {
-    showError(input, 'Email is not valid');
+    showError(input, 'Enter a valid email');
     return false;
   }
 }
 
 function checkRequired(inputs) {
-  let valid = true;
-  inputs.forEach((input) => {
+  let isValid = true;
+  inputs.forEach(input => {
     if (input.value.trim() === '') {
-      showError(input, `${getFieldName(input)} is required`);
-      valid = false;
+      showError(input, `${input.previousElementSibling.innerText} is required`);
+      isValid = false;
     } else {
       showSuccess(input);
     }
   });
-  return valid;
+  return isValid;
 }
 
-function getFieldName(input) {
-  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+function checkPassword(input) {
+  if (input.value.length < 6) {
+    showError(input, 'Password must be at least 6 characters');
+    return false;
+  }
+  showSuccess(input);
+  return true;
 }
 
-form.addEventListener('submit', function (e) {
+form.addEventListener('submit', function(e) {
   e.preventDefault();
 
-  if (checkRequired([username, email, password])) {
-    checkEmail(email);
+  const required = checkRequired([username, email, password]);
+  const validEmail = checkEmail(email);
+  const validPassword = checkPassword(password);
+
+  if (required && validEmail && validPassword) {
+    alert('Form submitted successfully!');
+    form.reset();
   }
 });
