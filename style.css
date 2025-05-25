@@ -17,13 +17,14 @@ body {
 /* Container */
 .container {
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc; /* <-- Add this line */
   border-radius: 10px;
   padding: 30px 40px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgb(0 0 0 / 0.1);
   width: 400px;
-  max-width: 90%;
+  max-width: 95%;
 }
+
 
 /* Heading */
 h2 {
