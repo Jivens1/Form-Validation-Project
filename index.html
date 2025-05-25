@@ -2,34 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Get Started</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up Form</title>
   <link rel="stylesheet" href="style.css" />
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
 </head>
 <body>
   <div class="container">
     <form id="form" class="form">
       <h2>Get Started</h2>
-      <p class="sub-text">Already have an account? <a href="#">Log In</a></p>
-
-      <div class="social-buttons">
-        <button class="social-btn google">
-          <i class="fab fa-google"></i> Sign up
-        </button>
-        <button class="social-btn facebook">
-          <i class="fab fa-facebook-f"></i> Sign up
-        </button>
-      </div>
-
-      <div class="divider">Or</div>
+      <p style="text-align: center; margin: 5px 0 20px;">
+        Already have an account? 
+        <a href="#" style="color: #d9534f; text-decoration: none;">Log In</a>
+      </p>
 
       <div class="form-control">
-        <label for="username">Name</label>
+        <label for="username">Username</label>
         <div class="input-wrapper">
-          <i class="fa fa-user icon"></i>
-          <input type="text" id="username" placeholder="Joy Shaheb" />
+          <input type="text" id="username" placeholder="Enter username" />
+          <i class="fa-solid fa-check-circle"></i>
+          <i class="fa-solid fa-exclamation-circle"></i>
         </div>
         <small>Error message</small>
       </div>
@@ -37,8 +33,9 @@
       <div class="form-control">
         <label for="email">Email</label>
         <div class="input-wrapper">
-          <i class="fa fa-envelope icon"></i>
-          <input type="email" id="email" placeholder="abc@gmail.com" />
+          <input type="email" id="email" placeholder="Enter email" />
+          <i class="fa-solid fa-check-circle"></i>
+          <i class="fa-solid fa-exclamation-circle"></i>
         </div>
         <small>Error message</small>
       </div>
@@ -46,13 +43,23 @@
       <div class="form-control">
         <label for="password">Password</label>
         <div class="input-wrapper">
-          <i class="fa fa-lock icon"></i>
-          <input type="password" id="password" placeholder="••••••••" />
+          <input type="password" id="password" placeholder="Enter password" />
+          <i class="fa-solid fa-check-circle"></i>
+          <i class="fa-solid fa-exclamation-circle"></i>
         </div>
         <small>Error message</small>
       </div>
 
-      <button type="submit" class="submit-btn">Submit</button>
+      <button type="submit">Submit</button>
+
+      <div class="social">
+        <button type="button" class="social-btn google">
+          <i class="fab fa-google"></i> sign up
+        </button>
+        <button type="button" class="social-btn facebook">
+          <i class="fab fa-facebook-f"></i> sign up
+        </button>
+      </div>
     </form>
   </div>
 
