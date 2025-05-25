@@ -2,29 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get Started</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <div class="container">
-    <h2>Get Started</h2>
-    <p class="subtext">Already have an account? <a href="#">Log In</a></p>
+    <form id="form" class="form">
+      <h2>Get Started</h2>
+      <p class="sub-text">Already have an account? <a href="#">Log In</a></p>
 
-    <div class="social-buttons">
-      <button class="social-btn google"><i class="fab fa-google"></i> Sign up</button>
-      <button class="social-btn facebook"><i class="fab fa-facebook-f"></i> Sign up</button>
-    </div>
+      <div class="social-buttons">
+        <button class="social-btn google">
+          <i class="fab fa-google"></i> Sign up
+        </button>
+        <button class="social-btn facebook">
+          <i class="fab fa-facebook-f"></i> Sign up
+        </button>
+      </div>
 
-    <div class="divider"><span>Or</span></div>
+      <div class="divider">Or</div>
 
-    <form id="form">
       <div class="form-control">
         <label for="username">Name</label>
         <div class="input-wrapper">
-          <i class="fas fa-user icon"></i>
+          <i class="fa fa-user icon"></i>
           <input type="text" id="username" placeholder="Joy Shaheb" />
         </div>
         <small>Error message</small>
@@ -33,7 +37,7 @@
       <div class="form-control">
         <label for="email">Email</label>
         <div class="input-wrapper">
-          <i class="fas fa-envelope icon"></i>
+          <i class="fa fa-envelope icon"></i>
           <input type="email" id="email" placeholder="abc@gmail.com" />
         </div>
         <small>Error message</small>
@@ -42,7 +46,7 @@
       <div class="form-control">
         <label for="password">Password</label>
         <div class="input-wrapper">
-          <i class="fas fa-lock icon"></i>
+          <i class="fa fa-lock icon"></i>
           <input type="password" id="password" placeholder="••••••••" />
         </div>
         <small>Error message</small>
