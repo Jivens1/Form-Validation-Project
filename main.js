@@ -3,60 +3,65 @@ const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 
+// Show error message
 function showError(input, message) {
   const formControl = input.closest('.form-control');
+  formControl.classList.remove('success');
   formControl.classList.add('error');
   const small = formControl.querySelector('small');
   small.innerText = message;
 }
 
+// Show success outline
 function showSuccess(input) {
   const formControl = input.closest('.form-control');
   formControl.classList.remove('error');
+  formControl.classList.add('success');
+  const small = formControl.querySelector('small');
+  small.innerText = '';
 }
 
+// Check if email is valid
 function checkEmail(input) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i;
   if (re.test(input.value.trim())) {
     showSuccess(input);
     return true;
   } else {
-    showError(input, 'Enter a valid email');
+    showError(input, 'Email is not valid');
     return false;
   }
 }
 
+// Check required fields
 function checkRequired(inputs) {
-  let isValid = true;
-  inputs.forEach(input => {
+  let allFilled = true;
+  inputs.forEach((input) => {
     if (input.value.trim() === '') {
-      showError(input, `${input.previousElementSibling.innerText} is required`);
-      isValid = false;
+      showError(input, `${getFieldName(input)} is required`);
+      allFilled = false;
     } else {
       showSuccess(input);
     }
   });
-  return isValid;
+  return allFilled;
 }
 
-function checkPassword(input) {
-  if (input.value.length < 6) {
-    showError(input, 'Password must be at least 6 characters');
-    return false;
-  }
-  showSuccess(input);
-  return true;
+// Get field name with first capital letter
+function getFieldName(input) {
+  return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 
-form.addEventListener('submit', function(e) {
+// Form submission
+form.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const required = checkRequired([username, email, password]);
+  const allFilled = checkRequired([username, email, password]);
   const validEmail = checkEmail(email);
-  const validPassword = checkPassword(password);
 
-  if (required && validEmail && validPassword) {
+  if (allFilled && validEmail) {
     alert('Form submitted successfully!');
     form.reset();
+    document.querySelectorAll('.form-control').forEach(fc => fc.classList.remove('success'));
   }
 });
